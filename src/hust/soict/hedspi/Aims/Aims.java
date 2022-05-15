@@ -6,6 +6,6 @@ package hust.soict.hedspi.Aims;
  */
 public class Aims {
     public static void main(String[] args) {
-        System.out.println("hust.soict.hedspi.Aims.Aims.main()");
+        System.out.println("hust.soict.hedspi.Aims.Aims.main()"); 
     }
 }

@@ -13,7 +13,15 @@ public class Order {
     private DigitalVideoDisc itemOrdered[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
     
     public int getQtyOrdered(){
-        return 0;
+        return this.qtyOrdered;
+    }
+
+    public DigitalVideoDisc[] getItemOrdered() {
+        return itemOrdered;
+    }
+
+    public void setItemOrdered(DigitalVideoDisc[] itemOrdered) {
+        this.itemOrdered = itemOrdered;
     }
     public void setQtyOrdered(int qtyOrdered) {
         

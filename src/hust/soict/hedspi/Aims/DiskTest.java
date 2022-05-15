@@ -9,10 +9,10 @@ import hust.soict.hedspi.Order.Order;
  */
 public class DiskTest {
     public static void main(String[] args) {
-        DigitalVideoDisc myVideoDisc = new DigitalVideoDisc();
+        DigitalVideoDisc myVideoDisc = new DigitalVideoDisc("Harry");
         System.err.println(myVideoDisc.search("Harry Potter"));
         Order myOrder = new Order();
         DigitalVideoDisc luckyDisc = myOrder.getALuckyItem();
-        System.err.println(luckyDisc.getTitle());
+        System.err.println(luckyDisc == null);
     }
 }

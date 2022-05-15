@@ -13,13 +13,37 @@ public class DigitalVideoDisc {
     private int length;
     private float cost;
     public String getTitle(){
-        return null;
+        return this.title;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
     }
     public void setTitle(String title){
         
     }
     public String getCategory(){
-        return null;
+        return this.category;
     }
     public void setCategory(String category){
         
@@ -28,8 +52,12 @@ public class DigitalVideoDisc {
         String currentTitle = this.title;
         String titleBreak[] = title.trim().split(" ");
         for (String string : titleBreak) {
-            if(currentTitle.indexOf(string) != -1) return true;
+            if(currentTitle.contains(string)) return true;
         }
         return false;
+    }
+
+    public DigitalVideoDisc(String title) {
+        this.title = title;
     }
 }
