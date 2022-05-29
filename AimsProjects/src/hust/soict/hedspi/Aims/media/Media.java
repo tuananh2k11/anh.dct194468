@@ -4,7 +4,7 @@ package hust.soict.hedspi.Aims.media;
  *
  * Created by FaceNet Tuan Anh at May 16, 2022
  */
-public class Media {
+public abstract class Media {
     private String title;
     private String category;
     private float cost;
@@ -19,24 +19,12 @@ public class Media {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public float getCost() {
         return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
     }
     
     public Media(){

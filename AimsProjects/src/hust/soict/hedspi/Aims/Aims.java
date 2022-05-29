@@ -3,7 +3,9 @@ package hust.soict.hedspi.Aims;
 import hust.soict.hedspi.Aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.Aims.Order.Order;
 import hust.soict.hedspi.Aims.media.Book;
+import hust.soict.hedspi.Aims.media.CompactDisc;
 import hust.soict.hedspi.Aims.media.Media;
+import hust.soict.hedspi.Aims.media.Track;
 import java.util.Scanner;
 
 /**
@@ -40,12 +42,8 @@ public class Aims {
                     String category = yourChoice.nextLine();
                     System.out.print("Cost: ");
                     float cost = Float.parseFloat(yourChoice.nextLine());
-                    System.out.println("1. Book 2. Disc");
+                    System.out.println("1. Book 2. DigitalVideoDisc 3.CompactDisc");
                     int type = Integer.parseInt(yourChoice.nextLine());
-                    if (type != 1 && type != 2) {
-                        
-                        break;
-                    }
                     if(type == 1){
                         Book myBook = new Book(title, category, cost);
                         System.out.print("Author list: ");
@@ -53,13 +51,43 @@ public class Aims {
                         myBook.addAuthor(authorList);
                         myOrder.addMedia(myBook);
                     }
-                    else{
-                        DigitalVideoDisc myDisc = new DigitalVideoDisc(title, category, cost);
+                    else if(type == 2){
+                        String director;
+                        int length;
                         System.out.print("Director: ");
-                        myDisc.setDirector(yourChoice.nextLine());
+                        director = yourChoice.nextLine();
                         System.out.print("Length: ");
-                        myDisc.setLength(Integer.parseInt(yourChoice.nextLine()));
-                        myOrder.addMedia(myDisc);
+                        length = Integer.parseInt(yourChoice.nextLine());
+                        DigitalVideoDisc dcp = new DigitalVideoDisc(length, director, title, category, cost);
+                        myOrder.addMedia(dcp);
+                        System.out.println("Play? 1. Yes 2. No");
+                        if (Integer.parseInt(yourChoice.nextLine()) == 1) {
+                            dcp.play();
+                        }
+                    }
+                    else {
+                        System.out.print("Artist: ");
+                        String artist = yourChoice.nextLine();
+                        CompactDisc cpd = new CompactDisc(artist, category, title, category, cost);
+                        String trackTitle;
+                        int trackLength;
+                        int checkAddTrack;
+                        do {                            
+                            System.out.println("Add Track?\n1. Yes \n0. No ");
+                            checkAddTrack  = Integer.parseInt(yourChoice.nextLine());
+                            if(checkAddTrack == 1){
+                                System.out.print("Title: ");
+                                trackTitle = yourChoice.nextLine();
+                                System.out.print("Length: ");
+                                trackLength = Integer.parseInt(yourChoice.nextLine());
+                                cpd.addTrack(new Track(trackTitle, trackLength));
+                            }
+                        } while(checkAddTrack == 1);
+                        myOrder.addMedia(cpd);
+                        System.out.println("Play? 1. Yes 2. No");
+                        if (Integer.parseInt(yourChoice.nextLine()) == 1) {
+                            cpd.play();
+                        }
                     }
                     break;
                 case 3:
