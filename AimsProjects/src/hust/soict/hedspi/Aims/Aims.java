@@ -36,6 +36,8 @@ public class Aims {
                     myOrder = new Order();
                     break;
                 case 2:
+                    System.out.print("Id:");
+                    int id = Integer.parseInt(yourChoice.nextLine());
                     System.out.print("Title: ");
                     String title = yourChoice.nextLine();
                     System.out.print("Category: ");
@@ -45,7 +47,7 @@ public class Aims {
                     System.out.println("1. Book 2. DigitalVideoDisc 3.CompactDisc");
                     int type = Integer.parseInt(yourChoice.nextLine());
                     if(type == 1){
-                        Book myBook = new Book(title, category, cost);
+                        Book myBook = new Book(id,title, category, cost);
                         System.out.print("Author list: ");
                         String[] authorList = yourChoice.nextLine().trim().split(",");
                         myBook.addAuthor(authorList);
@@ -58,7 +60,7 @@ public class Aims {
                         director = yourChoice.nextLine();
                         System.out.print("Length: ");
                         length = Integer.parseInt(yourChoice.nextLine());
-                        DigitalVideoDisc dcp = new DigitalVideoDisc(length, director, title, category, cost);
+                        DigitalVideoDisc dcp = new DigitalVideoDisc(id,length, director, title, category, cost);
                         myOrder.addMedia(dcp);
                         System.out.println("Play? 1. Yes 2. No");
                         if (Integer.parseInt(yourChoice.nextLine()) == 1) {
@@ -68,7 +70,7 @@ public class Aims {
                     else {
                         System.out.print("Artist: ");
                         String artist = yourChoice.nextLine();
-                        CompactDisc cpd = new CompactDisc(artist, category, title, category, cost);
+                        CompactDisc cpd = new CompactDisc(id,artist, category, title, category, cost);
                         String trackTitle;
                         int trackLength;
                         int checkAddTrack;
@@ -91,8 +93,8 @@ public class Aims {
                     }
                     break;
                 case 3:
-                    int id = Integer.parseInt(yourChoice.nextLine());                  
-                    myOrder.removeMedia(id);
+                    int idx = Integer.parseInt(yourChoice.nextLine());                  
+                    myOrder.removeMedia(idx);
                     break;
                 case 4:
                     myOrder.displayItems();
