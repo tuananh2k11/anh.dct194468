@@ -11,6 +11,5 @@ import hust.soict.hedspi.Aims.media.Media;
  */
 public class DiskTest {
     public static void main(String[] args) {
-        Book b = new Book();
     }
 }
