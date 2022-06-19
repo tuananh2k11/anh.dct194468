@@ -51,11 +51,12 @@ public abstract class Media implements Comparable<Object>{
     }
    
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) throws NullPointerException,ClassCastException{
+        if (obj == null) throw new NullPointerException();
         if(obj == this) return true;
-        if(!(obj instanceof Media)) return false;
+        if(!(obj instanceof Media)) throw new ClassCastException();
         Media mObj = (Media) obj;
-        return mObj.getId() == this.id;
+        return mObj.getTitle() == this.title && mObj.getCost() == this.cost;
     }
     
 }

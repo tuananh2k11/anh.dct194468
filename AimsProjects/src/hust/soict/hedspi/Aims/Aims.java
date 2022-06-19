@@ -6,6 +6,8 @@ import hust.soict.hedspi.Aims.media.Book;
 import hust.soict.hedspi.Aims.media.CompactDisc;
 import hust.soict.hedspi.Aims.media.Media;
 import hust.soict.hedspi.Aims.media.Track;
+
+import javax.naming.LimitExceededException;
 import java.util.Scanner;
 
 /**
@@ -24,16 +26,25 @@ public class Aims {
         System.out.println("--------------------------------");
         System.out.println("Please choose a number: 0-1-2-3-4");
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException, PlayerException {
         int choice;
-        Order myOrder = new Order();
+        Order myOrder;
+        try{
+            myOrder = new Order();
+        } catch (LimitExceededException e) {
+            throw new RuntimeException(e);
+        }
         Scanner yourChoice = new Scanner(System.in);
         do {            
             showMenu();
             choice = Integer.parseInt(yourChoice.nextLine());
             switch (choice) {
                 case 1:
-                    myOrder = new Order();
+                    try{
+                        myOrder = new Order();
+                    } catch (LimitExceededException e) {
+                        throw e;
+                    }
                     break;
                 case 2:
                     System.out.print("Id:");
@@ -64,7 +75,11 @@ public class Aims {
                         myOrder.addMedia(dcp);
                         System.out.println("Play? 1. Yes 2. No");
                         if (Integer.parseInt(yourChoice.nextLine()) == 1) {
-                            dcp.play();
+                            try{
+                                dcp.play();
+                            }catch (PlayerException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                     else {
@@ -88,7 +103,11 @@ public class Aims {
                         myOrder.addMedia(cpd);
                         System.out.println("Play? 1. Yes 2. No");
                         if (Integer.parseInt(yourChoice.nextLine()) == 1) {
-                            cpd.play();
+                            try{
+                                cpd.play();
+                            } catch (PlayerException e) {
+                                throw e;
+                            }
                         }
                     }
                     break;

@@ -4,10 +4,12 @@
  */
 package hust.soict.hedspi.Aims.media;
 
+import hust.soict.hedspi.Aims.PlayerException;
+
 /**
  *
  * @author Tuan Anh
  */
 public interface Playable {
-    public void play();
+    public void play() throws PlayerException;
 }

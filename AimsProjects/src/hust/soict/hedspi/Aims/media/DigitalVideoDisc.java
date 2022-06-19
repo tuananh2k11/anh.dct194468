@@ -1,5 +1,7 @@
 package hust.soict.hedspi.Aims.media;
 
+import hust.soict.hedspi.Aims.PlayerException;
+
 /**
  *
  * Created by TuanAnh at May 15, 2022
@@ -20,7 +22,11 @@ public class DigitalVideoDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play() {
+    public void play() throws PlayerException {
+        if (getLength() <= 0) {
+            System.err.println("Empty list");
+            throw new PlayerException();
+        }
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());
     }

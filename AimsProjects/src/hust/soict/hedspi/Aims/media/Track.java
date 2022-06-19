@@ -1,5 +1,7 @@
 package hust.soict.hedspi.Aims.media;
 
+import hust.soict.hedspi.Aims.PlayerException;
+
 /**
  *
  * Created by Tuan Anh at May 29, 2022
@@ -25,7 +27,8 @@ public class Track implements Playable{
     }
 
     @Override
-    public void play() {
+    public void play() throws PlayerException{
+        if (getLength() <= 0) throw new PlayerException();
         System.out.println("Playing Track: " + this.getTitle());
         System.out.println("Track length: " + this.getLength());
     }

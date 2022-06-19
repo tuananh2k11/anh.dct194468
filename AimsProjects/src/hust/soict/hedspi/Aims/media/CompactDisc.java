@@ -1,5 +1,7 @@
 package hust.soict.hedspi.Aims.media;
 
+import hust.soict.hedspi.Aims.PlayerException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +41,14 @@ public class CompactDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play() {
+    public void play() throws PlayerException{
+        if(tracks.size() <= 0) throw new PlayerException();
         for (Track track : tracks) {
-            track.play();
+            try{
+                track.play();
+            } catch (PlayerException e) {
+                throw e;
+            }
         }
     }
 }
